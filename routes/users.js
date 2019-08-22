@@ -12,12 +12,29 @@ router.post('/', [
     check('email', 'Please include a valid email').isEmail(),
     check('password', 'Please enter a password with six or more characters').isLength({ min: 6 })
     ], 
-    (req, res) => {
+    async (req, res) => {
       const errors = validationResult(req) // validationResult check for errors in req
       if(!errors.isEmpty()) {
           return res.status(400).json({ errors: errors.array() }) //method that will send an error of errors
       }
-      res.send("<h2>passed<h2>")
+      const { name, email, password } = req.body;
+
+      try {
+          let user = await User.findOne({ email });  //check to see if username is already taken
+
+          if(user) {
+              return res.status(400).json({ msg: 'User already exists' });
+          }
+
+          user = new User({ //create new user since above came back false
+              name: name,
+              email: email,
+              password: password
+          });
+          
+          const salt = await bcrypt.genSalt(10) //encrypt password with bcrypt with method genSalt 10 is encryption level
+      }
     });
+    
 
 module.exports = router;
