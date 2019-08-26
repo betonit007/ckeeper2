@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { check, validationResult } = require('express-validator'); // now can use second parameter in route to verify info
 const config = require('config');
+const { check, validationResult } = require('express-validator'); // now can use second parameter in route to verify info
 
 const User = require('../models/User');
 
@@ -20,6 +20,7 @@ router.post('/', [
       if(!errors.isEmpty()) {
           return res.status(400).json({ errors: errors.array() }) //method that will send an error of errors
       }
+      
       const { name, email, password } = req.body;
 
       try {
