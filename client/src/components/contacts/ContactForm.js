@@ -27,8 +27,6 @@ const ContactForm = () => {
         })
     }
 
-    console.log(contactContext.addContact);
-
     return (
         <form onSubmit={onSubmit}>
             <h2 className='text-primary'>Add Contact</h2>

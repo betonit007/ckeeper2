@@ -12,7 +12,21 @@ export default (state, action) => {
     switch(action.type) {
         case ADD_CONTACT:
             return {...state, contacts: [...state.contacts, action.payload ]} //state is immutable so we have to take current state.contacts and add the payload
-        default:
+        case DELETE_CONTACT:
+            return {...state, 
+            contacts: state.contacts.filter(contact => contact.id !== action.payload)
+        }
+        case SET_CURRENT:
+            console.log('hello')
+            return {
+                ...state, current: action.payload
+            }
+            
+        case CLEAR_CURRENT:
+            return {
+                ...state, current: null
+            }
+            default:
             return state;
     }
 }
