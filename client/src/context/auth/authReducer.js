@@ -28,6 +28,11 @@ export default (state, action) => {
                 user: null,
                 error: action.payload //the payload will include error message on a fail (from action)
             }
+        case CLEAR_ERRORS:
+            return {
+                ...state,
+                error: null
+            }
         default:
             return state;
     }
