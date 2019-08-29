@@ -59,7 +59,7 @@ const AuthState = props => {
       });
 
       loadUser();
-      
+
     } catch (err) {
       console.log(err);
       dispatch({
@@ -74,9 +74,7 @@ const AuthState = props => {
     console.log('login');
   }
   // Logout
-  const logout = () => {
-    console.log('logout');
-  }
+  const logout = () => dispatch({ type: LOGOUT });
   // Clear Errors
   const clearErrors = () => {
     dispatch({ type: CLEAR_ERRORS });
