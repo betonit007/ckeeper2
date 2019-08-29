@@ -10,6 +10,13 @@ import {
 
 export default (state, action) => {
     switch(action.type) {
+        case USER_LOADED:
+            return {
+                ...state,
+                isAuthenticated: true,
+                loading: false,
+                user: action.payload
+            }
         case REGISTER_SUCCESS:
           localStorage.setItem('token', action.payload.token) // Since registration was successful we set the token to local storage
           return {
@@ -19,6 +26,7 @@ export default (state, action) => {
               loading: false
           }
         case REGISTER_FAIL:
+        case AUTH_ERROR:
             localStorage.removeItem('token') //remove any token in storage since login failed
             return {
                 ...state,

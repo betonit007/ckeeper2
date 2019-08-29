@@ -10,7 +10,12 @@ import Alerts from './components/layout/Alerts';
 import ContactState from './context/contact/ContactState';
 import AuthState from './context/auth/AuthState';
 import AlertState from './context/alert/AlertState';
+import setAuthToken from './utils/setAuthToken';
 import './App.css';
+
+if (localStorage.token) { //check to see if there is a token in local storage and if so call setAuthToken to insert token into headers
+  setAuthToken(localStorage.token);
+}
 
 const App = () => {
   return (
