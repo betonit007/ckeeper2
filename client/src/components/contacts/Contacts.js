@@ -7,7 +7,9 @@ import ContactContext from '../../context/contact/contactContext';
 
 const Contacts = () => {
   const contactContext = useContext(ContactContext);
-  const { contacts, filtered } = contactContext;
+  const { contacts, filtered, loading } = contactContext;
+
+  console.log(contacts)
 
   if (contacts.length === 0) {
     return <h4>Please add a Contact!</h4>
@@ -19,12 +21,12 @@ const Contacts = () => {
       <TransitionGroup>
         {filtered !== null   // if filtered is empty map over all contacts else map over filtered contacts
           ? filtered.map(contact => 
-            <CSSTransition key={contact.id} timeout={500} classNames="item">
+            <CSSTransition key={contact._id} timeout={500} classNames="item">
               <ContactItem  contact={contact} />
             </CSSTransition>
             )
           : contacts.map(contact => 
-            <CSSTransition key={contact.id} timeout={500} classNames="item">
+            <CSSTransition key={contact._id} timeout={500} classNames="item">
               <ContactItem  contact={contact} />
             </CSSTransition>
             )

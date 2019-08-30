@@ -12,7 +12,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {  //destructoring a
         <Route { ...rest } render={props => !isAuthenticated && !loading ? (  //...rest passes in any extra props and then add a render that will take props. if user is not authenicated and the state is done loading then redirect to login page (they're not authenticated)
             <Redirect to='/login' />
         ) : (
-            <Component {...props} />
+            <Component {...props} /> // if user is logged in then load whatever the component is and its props
         )} />  
             
     )
