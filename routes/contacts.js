@@ -60,7 +60,7 @@ router.put('/:id', auth, async (req, res) => {
     const contactFields = {};
     //check to see if all of these fields are included before adding to object
     if(name) contactFields.name = name;
-    if(email) contactFiled.email = email;
+    if(email) contactFields.email = email;
     if(phone) contactFields.phone = phone;
     if(type) contactFields.type = type;
 
