@@ -3,8 +3,7 @@ const router = express.Router();
 const { check, validationResult } = require('express-validator'); // now can use second parameter in route to verify info
 const auth = require('../middleware/auth');
 
-const User = require('../models/User');
-const Contact = require('../models/Contact');
+const Contact = require('../models/contact');
 
 // @route    GET api/contacts
 // @desc     Get all users contacts
