@@ -10,8 +10,6 @@ connectDB();
 //Init Middleware
 app.use(express.json({ extended: false })); //now can accept data from req.body
 
-app.get('/', (req, res) => res.json({ msg: 'Welcome to Contact Keeper API!'}));
-
 // Define Routes
 
 app.use('/api/users', require('./routes/users'));
