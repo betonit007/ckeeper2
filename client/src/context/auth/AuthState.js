@@ -75,10 +75,8 @@ const AuthState = props => {
         'Content-Type': 'application/json'
       }
     }
-    console.log(formData);
     try {
       const res = await axios.post('/api/auth', formData, config); //we need to pass formData and config 
-      console.log('res', res.data);
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data
@@ -87,7 +85,6 @@ const AuthState = props => {
       loadUser();
 
     } catch (err) {
-      console.log(err);
       dispatch({
         type: LOGIN_FAIL,
         payload: err.response.data.msg

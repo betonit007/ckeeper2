@@ -50,7 +50,7 @@ router.post('/', [
             }
             // run below if there is a match
             jwt.sign({ user: {id: user.id }}, config.get('jwtSecret'), { //pass in an object with user id to create webtoken with jsonwebtoken
-                expiresIn: 360000                                         // a secret must also be passed into sign (it can be whatever you want (store in config.get() from config npm))
+                expiresIn: 60000                                         // a secret must also be passed into sign (it can be whatever you want (store in config.get() from config npm))
               }, (err, token) => {
                   if (err) throw err;
                   res.json({ token })
